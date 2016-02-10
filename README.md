@@ -39,7 +39,7 @@ default use-case is optimized for representing percentages stepped by
 as:
 
 ```handlebars
-{{x-range-input value=saturationPercenage on-input="updateSaturation"}}
+{{x-range-input value=saturationPercentage on-input="updateSaturation"}}
 ```
 
 ## EmberX

@@ -8,7 +8,7 @@ import Ember from 'ember';
  * For example:
  *
  *
- *   {{x-range-input min=0 max=100 step=1 value=someNumber on-input="someAction}}
+ *   {{x-range-input min=0 max=100 step=1 value=someNumber on-input="someAction"}}
  *
  * @class XRangeInputComponent
  */
