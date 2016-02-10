@@ -13,11 +13,23 @@ percentage of saturation in an image, where the smallest change in
 saturation is 1%, you might specify your slider control like:
 
 ```handlebars
-{{x-range-input min=0 max=100 step=1 value=saturationPercentage}}
+{{x-range-input min=0 max=100 step=1 value=saturationPercentage on-input="updateSaturation"}}
 ```
 
-The `value` property is fully reactive, and is ideal for real-time
-visualizations.
+In this example we would need to implement an `updateSaturation` action that
+sets the value of `saturationPercentage`. That might look something like this:
+
+
+```js
+actions: {
+  updateSaturation(component, value) {
+    this.set('saturationPercentage', value);
+  }
+}
+```
+The `on-input` sends two arguments with it. The first is the entire component
+and the second is the current value of the component.
+
 
 ### Default Values
 
@@ -27,7 +39,7 @@ default use-case is optimized for representing percentages stepped by
 as:
 
 ```handlebars
-{{x-range-inpitut value=saturationPercenage}}
+{{x-range-input value=saturationPercenage on-input="updateSaturation"}}
 ```
 
 ## EmberX
