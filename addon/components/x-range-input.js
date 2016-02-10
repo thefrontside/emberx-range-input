@@ -8,7 +8,7 @@ import Ember from 'ember';
  * For example:
  *
  *
- *   {{x-range-input min=0 max=100 step=1 value=someNumber on-input="someAction"}}
+ *   {{x-range-input min=0 max=100 step=1 value=someNumber action="someAction"}}
  *
  * @class XRangeInputComponent
  */
@@ -65,7 +65,7 @@ export default Ember.Component.extend({
    * @private
    */
   input() {
-    this.sendAction('on-input', this, this.get('element.value'));
+    this.sendAction('action', this, this.get('element.value'));
   },
 
   /**
