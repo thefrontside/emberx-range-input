@@ -1,3 +1,5 @@
 <h2 id="title">Welcome to Ember.js</h2>
 
-{{x-slider min=0 max=100 step=1 value=number}} {{number}}
+{{x-range-input min=0 max=100 step=1 value=number on-input="updateValue"}}
+
+<div class="spec-number">{{number}}</div>

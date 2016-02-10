@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import PropertyBindings from 'ember-binding-macros/mixins/property-bindings';
 
 /**
  * A component to represent a number that must fall between two
@@ -13,11 +12,10 @@ import PropertyBindings from 'ember-binding-macros/mixins/property-bindings';
  *
  * @class XRangeInputComponent
  */
-export default Ember.Component.extend(PropertyBindings, {
+export default Ember.Component.extend({
   type: "range",
   tagName: ['input'],
   classNames: ['x-range-input'],
-  propertyBindings: ['value > element.value'],
   attributeBindings: ['min', 'max', 'step', 'type', 'name', 'list'],
 
   /**
@@ -68,7 +66,7 @@ export default Ember.Component.extend(PropertyBindings, {
    * @private
    */
   input: function() {
-    this.set('value', Number(this.get('element.value')).valueOf());
+    this.sendAction('on-input', this, this.get('element.value'));
   },
 
   /**
