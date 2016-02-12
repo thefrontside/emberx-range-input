@@ -59,13 +59,29 @@ export default Ember.Component.extend({
   value: 0,
 
   /**
+   * On init and observing each update of `value`, copy to the
+   * `element.value` attribute
+   *
+   * @private
+   */
+  copyValue: Ember.observer('value', function() {
+    this.set('element.value', this.get('value'));
+  }),
+
+  /**
    * On any `input` event, take the component and the element `value` and send
    * it in an action.
    *
    * @private
    */
   input() {
-    this.sendAction('action', this, this.get('element.value'));
+    let newValue = Number(this.get('element.value')).valueOf();
+
+    // Allow old school 2 way binding with the `mut` helper
+    this.set('value', newValue);
+
+    // But preferably, use the default action to work with the emitted value
+    this.sendAction('action', newValue, this);
   },
 
   /**
@@ -75,6 +91,6 @@ export default Ember.Component.extend({
    * @override
    */
   didInsertElement() {
-    this.set('element.value', this.get('value'));
+    this.copyValue();
   }
 });

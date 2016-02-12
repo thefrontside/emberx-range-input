@@ -13,7 +13,7 @@ percentage of saturation in an image, where the smallest change in
 saturation is 1%, you might specify your slider control like:
 
 ```handlebars
-{{x-range-input min=0 max=100 step=1 value=saturationPercentage action="updateSaturation"}}
+{{x-range-input min=0 max=100 step=1 value=saturationPercentage action=(action "updateSaturation")}}
 ```
 
 In this example we would need to implement an `updateSaturation` action that
