@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/thefrontside/emberx-slider.svg)](https://travis-ci.org/thefrontside/emberx-range-input)
 [![Ember Observer Score](http://emberobserver.com/badges/emberx-range-input.svg)](http://emberobserver.com/addons/emberx-range-input)
 [![npm version](https://badge.fury.io/js/emberx-range-input.svg)](https://badge.fury.io/js/emberx-range-input)
+[![Ember Badge](https://embadge.io/b/2.svg)](https://embadge.io/badges/2)
 
 A Slider component based on the native html5 range input.
 
