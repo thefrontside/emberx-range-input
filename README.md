@@ -1,9 +1,8 @@
-## WARNING: This is a Work In Progress
-We're currently revamping this addon. If you really need this [you can use the old (and soon to be deprecated) addon located here.](https://github.com/thefrontside/emberx-slider)
-
 # emberx-range-input
 
 [![Build Status](https://travis-ci.org/thefrontside/emberx-slider.svg)](https://travis-ci.org/thefrontside/emberx-range-input)
+[![Ember Observer Score](http://emberobserver.com/badges/emberx-range-input.svg)](http://emberobserver.com/addons/emberx-range-input)
+[![npm version](https://badge.fury.io/js/emberx-range-input.svg)](https://badge.fury.io/js/emberx-range-input)
 
 A Slider component based on the native html5 range input.
 
