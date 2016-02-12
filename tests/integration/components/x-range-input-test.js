@@ -10,7 +10,7 @@ describeComponent('x-range-input', 'Integration: XRangeInputComponent', { integr
     expect(this.$()).to.have.length(1);
   });
 
-  describe("setting an intial vaule", function () {
+  describe("setting an intial value", function () {
     beforeEach(function() {
       this.set('number', 5);
       this.render(hbs`{{x-range-input min=0 max=100 step=1 value=number}}`);

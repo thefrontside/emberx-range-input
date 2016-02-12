@@ -13,11 +13,23 @@ percentage of saturation in an image, where the smallest change in
 saturation is 1%, you might specify your slider control like:
 
 ```handlebars
-{{x-range-input min=0 max=100 step=1 value=saturationPercentage}}
+{{x-range-input min=0 max=100 step=1 value=saturationPercentage action=(action "updateSaturation")}}
 ```
 
-The `value` property is fully reactive, and is ideal for real-time
-visualizations.
+In this example we would need to implement an `updateSaturation` action that
+sets the value of `saturationPercentage`. That might look something like this:
+
+
+```js
+actions: {
+  updateSaturation(value) {
+    this.set('saturationPercentage', value);
+  }
+}
+```
+The `action` sends two arguments with it. The first is the value and the
+second is the component itself as an optional argument.
+
 
 ### Default Values
 
@@ -27,7 +39,13 @@ default use-case is optimized for representing percentages stepped by
 as:
 
 ```handlebars
-{{x-range-inpitut value=saturationPercenage}}
+{{x-range-input value=saturationPercentage action=(action "updateSaturation")}}
+```
+
+### Classic "binding style" with the `mut` helper
+
+```handlebars
+{{x-range-input value=(mut saturationPercentage)}}
 ```
 
 ## EmberX
@@ -36,7 +54,6 @@ emberx-range-input is part of the "missing components of ember" collectively
 known as emberx:
 
 * [emberx-select](https://github.com/thefrontside/emberx-select)
-* [emberx-slider](https://github.com/thefrontside/emberx-slider)
 * [emberx-file-input](https://github.com/thefrontside/emberx-file-input)
 
 ## Installation

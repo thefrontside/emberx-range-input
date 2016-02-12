@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import PropertyBindings from 'ember-binding-macros/mixins/property-bindings';
 
 /**
  * A component to represent a number that must fall between two
@@ -9,15 +8,14 @@ import PropertyBindings from 'ember-binding-macros/mixins/property-bindings';
  * For example:
  *
  *
- *   {{x-range-input min=0 max=100 step=1 value=someNumber}}
+ *   {{x-range-input min=0 max=100 step=1 value=someNumber action="someAction"}}
  *
  * @class XRangeInputComponent
  */
-export default Ember.Component.extend(PropertyBindings, {
+export default Ember.Component.extend({
   type: "range",
   tagName: ['input'],
   classNames: ['x-range-input'],
-  propertyBindings: ['value > element.value'],
   attributeBindings: ['min', 'max', 'step', 'type', 'name', 'list'],
 
   /**
@@ -61,14 +59,29 @@ export default Ember.Component.extend(PropertyBindings, {
   value: 0,
 
   /**
-   * On any `input` event, copy the numeric value of the DOM element
-   * onto the `value` property of the component so that it can be
-   * bound to and from.
+   * On init and observing each update of `value`, copy to the
+   * `element.value` attribute
    *
    * @private
    */
-  input: function() {
-    this.set('value', Number(this.get('element.value')).valueOf());
+  copyValue: Ember.observer('value', function() {
+    this.set('element.value', this.get('value'));
+  }),
+
+  /**
+   * On any `input` event, take the component and the element `value` and send
+   * it in an action.
+   *
+   * @private
+   */
+  input() {
+    let newValue = Number(this.get('element.value')).valueOf();
+
+    // Allow old school 2 way binding with the `mut` helper
+    this.set('value', newValue);
+
+    // But preferably, use the default action to work with the emitted value
+    this.sendAction('action', newValue, this);
   },
 
   /**
@@ -77,7 +90,7 @@ export default Ember.Component.extend(PropertyBindings, {
    *
    * @override
    */
-  didInsertElement: function() {
-    this.set('element.value', this.get('value'));
+  didInsertElement() {
+    this.copyValue();
   }
 });
