@@ -1,7 +1,7 @@
 {
   "name": "emberx-range-input",
-  "version": "1.0.5",
-  "description": "A Slider component based on the native html5 range input",
+  "version": "1.0.0",
+  "description": "A range input component based on the native html5 range input",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -37,7 +37,12 @@
     "ember-try": "~0.0.8"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "range-input",
+    "slider",
+    "ember-slider",
+    "ember-range-input",
+    "ember"
   ],
   "dependencies": {
     "ember-cli-babel": "^5.1.5"
