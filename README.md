@@ -22,13 +22,13 @@ sets the value of `saturationPercentage`. That might look something like this:
 
 ```js
 actions: {
-  updateSaturation(component, value) {
+  updateSaturation(value) {
     this.set('saturationPercentage', value);
   }
 }
 ```
-The `action` sends two arguments with it. The first is the entire component
-and the second is the current value of the component.
+The `action` sends two arguments with it. The first is the value and the
+second is the component itself as an optional argument.
 
 
 ### Default Values
@@ -39,7 +39,13 @@ default use-case is optimized for representing percentages stepped by
 as:
 
 ```handlebars
-{{x-range-input value=saturationPercentage action="updateSaturation"}}
+{{x-range-input value=saturationPercentage action=(action "updateSaturation")}}
+```
+
+### Classic "binding style" with the `mut` helper
+
+```handlebars
+{{x-range-input value=(mut saturationPercentage)}}
 ```
 
 ## EmberX
@@ -48,7 +54,6 @@ emberx-range-input is part of the "missing components of ember" collectively
 known as emberx:
 
 * [emberx-select](https://github.com/thefrontside/emberx-select)
-* [emberx-slider](https://github.com/thefrontside/emberx-slider)
 * [emberx-file-input](https://github.com/thefrontside/emberx-file-input)
 
 ## Installation
