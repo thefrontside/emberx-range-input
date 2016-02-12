@@ -11,7 +11,7 @@
     "start": "ember server",
     "test": "ember try:testall"
   },
-  "repository": "https://github.com/thefrontside/emberx-slider",
+  "repository": "https://github.com/thefrontside/emberx-range-input",
   "engines": {
     "node": ">= 0.10.0"
   },
