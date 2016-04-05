@@ -13,7 +13,7 @@ import Ember from 'ember';
  * @class XRangeInputComponent
  */
 export default Ember.Component.extend({
-  type: "range",
+  type: 'range',
   tagName: ['input'],
   classNames: ['x-range-input'],
   attributeBindings: ['min', 'max', 'step', 'type', 'name', 'list'],
@@ -67,6 +67,28 @@ export default Ember.Component.extend({
   copyValue: Ember.observer('value', function() {
     this.set('element.value', this.get('value'));
   }),
+
+  /**
+   * Fix for IE 10-11 browsers.
+   *
+   * IE 10 and 11 flat out do not fire `input` events on `range`
+   * inputs. But it does fire `change` events exactly like the `input`
+   * event. So we'll use the change event in only Trident browsers and
+   * call our input method.
+   *
+   * As much as I would like to avoid UA sniffing, even Modernizer
+   * labels events as "undetectable" for feature detecting:
+   * https://github.com/Modernizr/Modernizr/issues/210
+   *
+   * @private
+   * @reference http://www.impressivewebs.com/onchange-vs-oninput-for-range-sliders/
+   */
+  change() {
+    if (navigator.userAgent.indexOf('Trident/') !== -1) {
+      // needs to be called with context for some reason
+      this.get('input').call(this);
+    }
+  },
 
   /**
    * On any `input` event, take the component and the element `value` and send
