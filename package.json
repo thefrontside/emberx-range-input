@@ -1,6 +1,6 @@
 {
   "name": "emberx-range-input",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A range input component based on the native html5 range input",
   "directories": {
     "doc": "doc",
