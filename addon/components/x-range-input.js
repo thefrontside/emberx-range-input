@@ -69,12 +69,12 @@ export default Ember.Component.extend({
   }),
 
   /**
-   * On any `input` event, take the component and the element `value` and send
+   * On any `change` event, take the component and the element `value` and send
    * it in an action.
    *
    * @private
    */
-  input() {
+  change() {
     let newValue = Number(this.get('element.value')).valueOf();
 
     // Allow old school 2 way binding with the `mut` helper

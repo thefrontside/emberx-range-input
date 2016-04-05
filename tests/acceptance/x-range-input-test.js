@@ -37,7 +37,7 @@ describe('Acceptance: XRangeInput', function() {
     describe("changing the input value", function() {
       beforeEach(function() {
         Ember.$(".x-range-input").val("25");
-        Ember.$(".x-range-input").trigger('input');
+        Ember.$(".x-range-input").trigger('change');
       });
 
       it("changes the number", function() {
