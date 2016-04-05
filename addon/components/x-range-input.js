@@ -13,7 +13,7 @@ import Ember from 'ember';
  * @class XRangeInputComponent
  */
 export default Ember.Component.extend({
-  type: "range",
+  type: 'range',
   tagName: ['input'],
   classNames: ['x-range-input'],
   attributeBindings: ['min', 'max', 'step', 'type', 'name', 'list'],
@@ -67,6 +67,17 @@ export default Ember.Component.extend({
   copyValue: Ember.observer('value', function() {
     this.set('element.value', this.get('value'));
   }),
+
+  /**
+   * This is only here to fix IE browsers until https://github.com/emberjs/ember.js/issues/13255 is fixed
+   *
+   * @private
+   */
+  change() {
+    if (navigator.userAgent.indexOf('Trident/') !== -1) {
+      this.get('input')();
+    }
+  },
 
   /**
    * On any `input` event, take the component and the element `value` and send
