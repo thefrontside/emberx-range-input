@@ -75,7 +75,8 @@ export default Ember.Component.extend({
    */
   change() {
     if (navigator.userAgent.indexOf('Trident/') !== -1) {
-      this.get('input')();
+      // needs to be called with context for some reason
+      this.get('input').call(this);
     }
   },
 
@@ -86,6 +87,7 @@ export default Ember.Component.extend({
    * @private
    */
   input() {
+
     let newValue = Number(this.get('element.value')).valueOf();
 
     // Allow old school 2 way binding with the `mut` helper
