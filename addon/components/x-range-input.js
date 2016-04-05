@@ -69,9 +69,19 @@ export default Ember.Component.extend({
   }),
 
   /**
-   * This is only here to fix IE browsers until https://github.com/emberjs/ember.js/issues/13255 is fixed
+   * Fix for IE 10-11 browsers.
+   *
+   * IE 10 and 11 flat out do not fire `input` events on `range`
+   * inputs. But it does fire `change` events exactly like the `input`
+   * event. So we'll use the change event in only Trident browsers and
+   * call our input method.
+   *
+   * As much as I would like to avoid UA sniffing, even Modernizer
+   * labels events as "undetectable" for feature detecting:
+   * https://github.com/Modernizr/Modernizr/issues/210
    *
    * @private
+   * @reference http://www.impressivewebs.com/onchange-vs-oninput-for-range-sliders/
    */
   change() {
     if (navigator.userAgent.indexOf('Trident/') !== -1) {
@@ -87,7 +97,6 @@ export default Ember.Component.extend({
    * @private
    */
   input() {
-
     let newValue = Number(this.get('element.value')).valueOf();
 
     // Allow old school 2 way binding with the `mut` helper
