@@ -13,7 +13,7 @@ import Ember from 'ember';
  * @class XRangeInputComponent
  */
 export default Ember.Component.extend({
-  type: "range",
+  type: 'range',
   tagName: ['input'],
   classNames: ['x-range-input'],
   attributeBindings: ['min', 'max', 'step', 'type', 'name', 'list'],
@@ -69,12 +69,25 @@ export default Ember.Component.extend({
   }),
 
   /**
+   * This is only here to fix IE browsers until https://github.com/emberjs/ember.js/issues/13255 is fixed
+   *
+   * @private
+   */
+  change() {
+    if (navigator.userAgent.indexOf('Trident/') !== -1) {
+      // needs to be called with context for some reason
+      this.get('input').call(this);
+    }
+  },
+
+  /**
    * On any `input` event, take the component and the element `value` and send
    * it in an action.
    *
    * @private
    */
   input() {
+
     let newValue = Number(this.get('element.value')).valueOf();
 
     // Allow old school 2 way binding with the `mut` helper
