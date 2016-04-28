@@ -16,7 +16,7 @@ export default Ember.Component.extend({
   type: 'range',
   tagName: ['input'],
   classNames: ['x-range-input'],
-  attributeBindings: ['min', 'max', 'step', 'type', 'name', 'list'],
+  attributeBindings: ['min', 'max', 'step', 'type', 'name', 'list', 'disabled'],
 
   /**
    * The minimum value that this component's `value` property may
