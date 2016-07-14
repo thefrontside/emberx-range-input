@@ -1,13 +1,9 @@
 {
   "name": "emberx-range-input",
   "dependencies": {
-    "ember": "1.13.12",
-    "ember-cli-shims": "0.0.6",
-    "ember-cli-test-loader": "0.2.1",
-    "ember-load-initializers": "0.1.7",
-    "ember-resolver": "~0.1.20",
-    "jquery": "1.11.3",
-    "loader.js": "ember-cli/loader.js#3.4.0",
-    "ember-mocha": "~0.8.11"
+    "ember-mocha": "~0.8.11",
+    "ember": "~2.6.0",
+    "ember-cli-shims": "0.1.1",
+    "ember-cli-test-loader": "0.2.2"
   }
 }
