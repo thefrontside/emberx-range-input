@@ -99,10 +99,6 @@ export default Ember.Component.extend({
   input() {
     let newValue = Number(this.get('element.value')).valueOf();
 
-    // Allow old school 2 way binding with the `mut` helper
-    this.set('value', newValue);
-
-    // But preferably, use the default action to work with the emitted value
     this.sendAction('action', newValue, this);
   },
 

@@ -66,4 +66,21 @@ describeComponent('x-range-input', 'Integration: XRangeInputComponent', { integr
     });
 
   });
+
+  describe("moving the slider without an action", function() {
+    beforeEach(function() {
+      this.set('value', 50);
+      this.render(hbs`{{x-range-input value=value}}`);
+    });
+
+    beforeEach(function() {
+      // Change the value of the component like we've dragged it.
+      this.$('input').val(60).trigger('input');
+    });
+
+    it("shouldn't update the value", function() {
+      expect(this.get('value')).to.equal(50);
+    });
+  });
+
 });
