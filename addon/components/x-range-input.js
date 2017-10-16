@@ -14,7 +14,7 @@ import Ember from 'ember';
  */
 export default Ember.Component.extend({
   type: 'range',
-  tagName: ['input'],
+  tagName: 'input',
   classNames: ['x-range-input'],
   attributeBindings: ['min', 'max', 'step', 'type', 'name', 'list', 'disabled'],
 
