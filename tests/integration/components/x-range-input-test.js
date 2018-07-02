@@ -1,19 +1,21 @@
-/* jshint expr:true */
+import { render } from '@ember/test-helpers';
 import { expect } from 'chai';
-import { describeComponent, it } from 'ember-mocha';
-import { describe, beforeEach } from 'mocha';
+import { setupRenderingTest } from 'ember-mocha';
+import { describe, it, beforeEach } from 'mocha';
 import hbs from 'htmlbars-inline-precompile';
 
-describeComponent('x-range-input', 'Integration: XRangeInputComponent', { integration: true }, function() {
-  it('renders', function() {
-    this.render(hbs`{{x-range-input min=0 max=100 step=1 value=number}}`);
+describe('Integration: XRangeInputComponent', function() {
+  setupRenderingTest();
+
+  it('renders',async function() {
+    await render(hbs`{{x-range-input min=0 max=100 step=1 value=number}}`);
     expect(this.$()).to.have.length(1);
   });
 
   describe("setting an intial value", function () {
-    beforeEach(function() {
+    beforeEach(async function() {
       this.set('number', 5);
-      this.render(hbs`{{x-range-input min=0 max=100 step=1 value=number}}`);
+      await render(hbs`{{x-range-input min=0 max=100 step=1 value=number}}`);
     });
 
     it("sets the intial value", function() {
@@ -21,9 +23,8 @@ describeComponent('x-range-input', 'Integration: XRangeInputComponent', { integr
     });
 
     describe("setting the dom value", function () {
-      beforeEach(function() {
+      beforeEach(async function() {
         this.set('number', 10);
-        this.render(hbs`{{x-range-input min=0 max=100 step=1 value=number}}`);
       });
 
       it("updates the value", function() {
@@ -33,7 +34,7 @@ describeComponent('x-range-input', 'Integration: XRangeInputComponent', { integr
   });
 
   describe("setting bound attributes", function () {
-    beforeEach(function() {
+    beforeEach(async function() {
       this.setProperties({
         min: "5",
         max: "20",
@@ -42,7 +43,7 @@ describeComponent('x-range-input', 'Integration: XRangeInputComponent', { integr
         name: "my-slider",
         list: "my-list"
       });
-      this.render(hbs`{{x-range-input min=min max=max step=step name=name value=value list=list}}`);
+      await render(hbs`{{x-range-input min=min max=max step=step name=name value=value list=list}}`);
     });
 
     it("binds the min attribute properly", function() {
@@ -68,13 +69,9 @@ describeComponent('x-range-input', 'Integration: XRangeInputComponent', { integr
   });
 
   describe("moving the slider without an action", function() {
-    beforeEach(function() {
+    beforeEach(async function() {
       this.set('value', 50);
-      this.render(hbs`{{x-range-input value=value}}`);
-    });
-
-    beforeEach(function() {
-      // Change the value of the component like we've dragged it.
+      await render(hbs`{{x-range-input value=value}}`);
       this.$('input').val(60).trigger('input');
     });
 
