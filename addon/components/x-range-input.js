@@ -1,4 +1,5 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { observer, get, set } from '@ember/object';
 
 /**
  * A component to represent a number that must fall between two
@@ -8,11 +9,11 @@ import Ember from 'ember';
  * For example:
  *
  *
- *   {{x-range-input min=0 max=100 step=1 value=someNumber action="someAction"}}
+ *   {{x-range-input min=0 max=100 step=1 value=someNumber action=(action "someAction")}}
  *
  * @class XRangeInputComponent
  */
-export default Ember.Component.extend({
+export default Component.extend({
   type: 'range',
   tagName: 'input',
   classNames: ['x-range-input'],
@@ -64,8 +65,8 @@ export default Ember.Component.extend({
    *
    * @private
    */
-  copyValue: Ember.observer('value', function() {
-    this.set('element.value', this.get('value'));
+  copyValue: observer('value', function() {
+    set(this, 'element.value', get(this, 'value'));
   }),
 
   /**
@@ -86,7 +87,7 @@ export default Ember.Component.extend({
   change() {
     if (navigator.userAgent.indexOf('Trident/') !== -1) {
       // needs to be called with context for some reason
-      this.get('input').call(this);
+      get(this, 'input').call(this);
     }
   },
 
@@ -97,9 +98,12 @@ export default Ember.Component.extend({
    * @private
    */
   input() {
-    let newValue = Number(this.get('element.value')).valueOf();
-
-    this.sendAction('action', newValue, this);
+    let newValue = Number(get(this, 'element.value')).valueOf();
+    let action = get(this, 'action')
+    
+    if(typeof(action) === 'function') {
+      action(newValue, this);
+    }
   },
 
   /**
