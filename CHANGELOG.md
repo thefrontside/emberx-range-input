@@ -1,5 +1,33 @@
 # Change Log
 
+## [v1.0.3](https://github.com/thefrontside/emberx-range-input/tree/v1.0.3) (2018-07-03)
+[Full Changelog](https://github.com/thefrontside/emberx-range-input/compare/v1.0.2...v1.0.3)
+
+**Implemented enhancements:**
+
+- Make 1-way by default [\#14](https://github.com/thefrontside/emberx-range-input/issues/14)
+- Remove two way data binding [\#15](https://github.com/thefrontside/emberx-range-input/pull/15) ([Robdel12](https://github.com/Robdel12))
+
+**Closed issues:**
+
+- Update ember-cli-babel [\#23](https://github.com/thefrontside/emberx-range-input/issues/23)
+- Problem installing [\#19](https://github.com/thefrontside/emberx-range-input/issues/19)
+- Setting list attribute broken in Ember 2.10.0 [\#17](https://github.com/thefrontside/emberx-range-input/issues/17)
+
+**Merged pull requests:**
+
+- Update to 3.1.4 dependencies and style [\#24](https://github.com/thefrontside/emberx-range-input/pull/24) ([benmurden](https://github.com/benmurden))
+- Fix tagName for Ember FastBoot [\#22](https://github.com/thefrontside/emberx-range-input/pull/22) ([oskarrough](https://github.com/oskarrough))
+- fix build badge [\#18](https://github.com/thefrontside/emberx-range-input/pull/18) ([cowboyd](https://github.com/cowboyd))
+- Update ember-cli [\#16](https://github.com/thefrontside/emberx-range-input/pull/16) ([Robdel12](https://github.com/Robdel12))
+
+## [v1.0.2](https://github.com/thefrontside/emberx-range-input/tree/v1.0.2) (2016-04-28)
+[Full Changelog](https://github.com/thefrontside/emberx-range-input/compare/v1.0.1...v1.0.2)
+
+**Merged pull requests:**
+
+- Update x-range-input.js [\#13](https://github.com/thefrontside/emberx-range-input/pull/13) ([jackmatt2](https://github.com/jackmatt2))
+
 ## [v1.0.1](https://github.com/thefrontside/emberx-range-input/tree/v1.0.1) (2016-04-05)
 [Full Changelog](https://github.com/thefrontside/emberx-range-input/compare/v1.0.0...v1.0.1)
 
